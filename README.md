@@ -64,10 +64,18 @@ If you find this repository useful in your research, please cite our paper:
 
 **Ziyu Wang, Yiming Du, Rui Ning, Daniel Takabi, and Lusi Li.**  
 "[ECSC: Energy-Calibrated Semantic Communication](https://ieeexplore.ieee.org/document/11310481)."  
-*IEEE Xplore*, Document 11310481.
+*Proceedings of the IEEE Military Communications Conference (MILCOM)*, pp. 1359–1364, 2025.
 
-The official BibTeX entry can be obtained from the paper's IEEE Xplore page using **Cite This → BibTeX**.
-
+```bibtex
+@inproceedings{wang2025ecsc,
+  title={ECSC: Energy-Calibrated Semantic Communication},
+  author={Wang, Ziyu and Du, Yiming and Ning, Rui and Takabi, Daniel and Li, Lusi},
+  booktitle={MILCOM 2025 - 2025 IEEE Military Communications Conference (MILCOM)},
+  pages={1359--1364},
+  year={2025},
+  organization={IEEE}
+}
+```
 ## 📬 Contact
 
 For questions regarding the implementation, experimental results, or research collaboration, please open an issue in this repository or contact the authors.

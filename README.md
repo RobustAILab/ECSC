@@ -15,8 +15,6 @@
 
 **ECSC (Energy-Calibrated Semantic Communication)** is an end-to-end semantic communication framework designed to preserve semantic information and improve reconstruction robustness under noisy wireless channels.
 
-Existing semantic communication approaches often rely on task-specific supervision or pixel-level reconstruction objectives, which may fail to preserve semantic consistency under channel noise and semantic distortions.
-
 To address these limitations, ECSC integrates **multi-scale hierarchical feature learning**, **energy-based semantic calibration**, and **topology-preserving regularization** into a unified communication framework.
 
 Specifically, ECSC employs a **multi-scale U-Net autoencoder** with ResNet backbones to learn hierarchical representations, together with lightweight compression and decompression modules for efficient transmission. A trainable **energy-based model (EBM)**, guided by a pre-trained CLIP vision encoder, promotes semantic alignment between original and reconstructed images.
@@ -37,18 +35,6 @@ This repository provides the **official PyTorch implementation** of ECSC.
 ![ECSC Architecture](./ECSC.png)
 
 *Overview of the proposed ECSC framework, integrating hierarchical feature learning, semantic calibration, and topology-preserving regularization.*
-
-## ✨ Key Features
-
-- **Energy-Calibrated Semantic Communication:** Integrates energy-based learning into an end-to-end semantic communication framework to improve semantic preservation under noisy channels.
-- **Multi-Scale U-Net Autoencoder:** Employs a U-Net architecture with ResNet backbones for hierarchical feature extraction and reconstruction.
-- **Lightweight Compression and Decompression:** Uses compact modules to encode transmitted features and recover them at the receiver.
-- **Energy-Based Semantic Calibration:** Trains an EBM through margin-based contrastive learning to assign lower energy to semantically aligned image pairs and higher energy to mismatched pairs.
-- **CLIP-Guided Semantic Estimation:** Leverages a pre-trained CLIP vision encoder to provide semantic guidance for energy-based calibration.
-- **Hierarchical Reconstruction Alignment:** Combines energy-weighted image reconstruction and multi-scale feature reconstruction to preserve both semantic and feature-level consistency.
-- **Sparsity Regularization:** Encourages compact and efficient feature representations across hierarchical levels.
-- **KNN Topology Preservation:** Maintains local relationships among latent representations through label-free topology regularization.
-- **Robustness to Channel Noise:** Improves semantic fidelity and reconstruction performance, particularly under low-SNR AWGN channel conditions.
 
 ## ⚙️ Requirements
 

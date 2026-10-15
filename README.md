@@ -1,46 +1,87 @@
 # ECSC: Energy-Calibrated Semantic Communication
 
-**Authors:** Ziyu Wang*, Yiming Du*, Rui Ning*, Daniel Takabi†, and Lusi Li*
-<br>
-*Department of Computer Science, Old Dominion University, Norfolk, VA, 23529, USA*
-<br>
-*†School of Cybersecurity, Old Dominion University, Norfolk, VA, 23529, USA*
+**Ziyu Wang¹, Yiming Du¹, Rui Ning¹, Daniel Takabi², and Lusi Li¹**
 
-**Paper Link:** (TBD)
-**Code Repository:** [https://github.com/sunway677/ECSC]
+¹ Department of Computer Science, Old Dominion University, Norfolk, VA, USA  
+² School of Cybersecurity, Old Dominion University, Norfolk, VA, USA
 
-## Overview
+📄 **Paper Available on [IEEE Xplore](https://ieeexplore.ieee.org/document/11310481)**
 
-Ensuring robust semantic preservation under noisy channel conditions remains a fundamental challenge in semantic communication. Most existing approaches, which rely on either task-specific supervision or pixel-level reconstruction loss, often fail to maintain semantic consistency when faced with both channel noise and inherent semantic distortions.
+🔗 **[Paper](https://ieeexplore.ieee.org/document/11310481)** | **[Code](https://github.com/sunway677/ECSC)**
 
-This repository contains the official PyTorch implementation for the paper "ECSC: Energy-Calibrated Semantic Communication". ECSC is an end-to-end framework that integrates a multi-scale U-Net autoencoder for hierarchical feature learning, lightweight compression-decompression modules for efficient transmission, and a trainable energy-based model (EBM) for semantic calibration. Our framework uniquely enforces hierarchical alignment through semantic-aware reconstruction. An energy-weighted reconstruction loss in terms of images and a multi-scale feature reconstruction loss enforces hierarchical alignment in terms of features. A sparsity regularization is applied to feature levels. Our EBM, trained via margin-based contrastive learning, enhances semantic alignment between input and reconstructed images by leveraging a pre-trained CLIP vision encoder as a semantic estimator. Furthermore, we propose a K-nearest neighbor topology regularizer to preserve latent feature relationships without requiring labeled data, ensuring structural consistency in the semantic space.
+---
 
-Experiments on CIFAR-10 over AWGN channels demonstrate ECSC’s superiority, especially in low-SNR scenarios, delivering improved semantic fidelity, reconstruction quality, and robustness to both distortions.
+## 📖 Overview
 
-## Key Features
+**ECSC (Energy-Calibrated Semantic Communication)** is an end-to-end semantic communication framework designed to preserve semantic information and improve reconstruction robustness under noisy wireless channels.
 
-* **Energy-Calibrated Semantic Communication (ECSC):** A novel framework for robust semantic communication.
-* **Multi-Scale U-Net Autoencoder:** Employs a U-Net architecture with ResNet backbones for hierarchical feature learning.
-* **Lightweight Compression/Decompression:** Efficient modules for feature compression before transmission and decompression at the receiver.
-* **Trainable Energy-Based Model (EBM):** Calibrates semantic representations by assigning low energy to semantically aligned pairs and high energy to mismatched ones.
-* **CLIP-Guided Semantic Estimation:** Uses a pre-trained CLIP vision encoder to provide semantic guidance to the EBM.
-* **Hierarchical Alignment:**
-    * Energy-weighted reconstruction loss for images.
-    * Multi-scale feature reconstruction loss for feature consistency.
-* **Sparsity Regularization:** Applied to feature levels to promote efficient representations.
-* **K-Nearest Neighbor (KNN) Topology Regularizer:** Preserves latent feature relationships in the semantic space without labeled data.
-* **Robust Performance:** Demonstrates superior performance on CIFAR-10, especially in low Signal-to-Noise Ratio (SNR) conditions over AWGN channels.
+Existing semantic communication approaches often rely on task-specific supervision or pixel-level reconstruction objectives, which may fail to preserve semantic consistency under channel noise and semantic distortions.
 
-## System Architecture
+To address these limitations, ECSC integrates **multi-scale hierarchical feature learning**, **energy-based semantic calibration**, and **topology-preserving regularization** into a unified communication framework.
+
+Specifically, ECSC employs a **multi-scale U-Net autoencoder** with ResNet backbones to learn hierarchical representations, together with lightweight compression and decompression modules for efficient transmission. A trainable **energy-based model (EBM)**, guided by a pre-trained CLIP vision encoder, promotes semantic alignment between original and reconstructed images.
+
+To further improve semantic and structural consistency, ECSC incorporates:
+
+- **Energy-weighted image reconstruction** to encourage semantically faithful reconstruction.
+- **Multi-scale feature reconstruction** to preserve hierarchical feature representations.
+- **Sparsity regularization** to encourage compact feature representations.
+- **K-nearest neighbor (KNN) topology regularization** to preserve relationships among latent features without requiring class labels.
+
+Experiments on **CIFAR-10 over additive white Gaussian noise (AWGN) channels** demonstrate improved semantic fidelity, reconstruction quality, and robustness, particularly under low signal-to-noise ratio (SNR) conditions.
+
+This repository provides the **official PyTorch implementation** of ECSC.
+
+## 🏗️ System Architecture
 
 ![ECSC Architecture](./ECSC.png)
 
-## Requirements
+*Overview of the proposed ECSC framework, integrating hierarchical feature learning, semantic calibration, and topology-preserving regularization.*
 
-* Python 3.x
-* PyTorch
-* Transformers (for CLIP)
-* NumPy
-* Matplotlib (for visualization)
-* Scikit-image (for metrics like SSIM, PSNR)
-* tqdm (for progress bars)
+## ✨ Key Features
+
+- **Energy-Calibrated Semantic Communication:** Integrates energy-based learning into an end-to-end semantic communication framework to improve semantic preservation under noisy channels.
+- **Multi-Scale U-Net Autoencoder:** Employs a U-Net architecture with ResNet backbones for hierarchical feature extraction and reconstruction.
+- **Lightweight Compression and Decompression:** Uses compact modules to encode transmitted features and recover them at the receiver.
+- **Energy-Based Semantic Calibration:** Trains an EBM through margin-based contrastive learning to assign lower energy to semantically aligned image pairs and higher energy to mismatched pairs.
+- **CLIP-Guided Semantic Estimation:** Leverages a pre-trained CLIP vision encoder to provide semantic guidance for energy-based calibration.
+- **Hierarchical Reconstruction Alignment:** Combines energy-weighted image reconstruction and multi-scale feature reconstruction to preserve both semantic and feature-level consistency.
+- **Sparsity Regularization:** Encourages compact and efficient feature representations across hierarchical levels.
+- **KNN Topology Preservation:** Maintains local relationships among latent representations through label-free topology regularization.
+- **Robustness to Channel Noise:** Improves semantic fidelity and reconstruction performance, particularly under low-SNR AWGN channel conditions.
+
+## ⚙️ Requirements
+
+The implementation is based on Python and PyTorch.
+
+**Core Dependencies**
+
+- Python 3.x
+- PyTorch
+- Transformers (for CLIP)
+- NumPy
+- Matplotlib
+- scikit-image
+- tqdm
+
+Install the required packages using:
+
+```bash
+pip install torch transformers numpy matplotlib scikit-image tqdm
+```
+
+For reproducibility, we recommend using a dedicated Python environment and installing package versions compatible with your CUDA and PyTorch configurations.
+
+## 📚 Citation
+
+If you find this repository useful in your research, please cite our paper:
+
+**Ziyu Wang, Yiming Du, Rui Ning, Daniel Takabi, and Lusi Li.**  
+"[ECSC: Energy-Calibrated Semantic Communication](https://ieeexplore.ieee.org/document/11310481)."  
+*IEEE Xplore*, Document 11310481.
+
+The official BibTeX entry can be obtained from the paper's IEEE Xplore page using **Cite This → BibTeX**.
+
+## 📬 Contact
+
+For questions regarding the implementation, experimental results, or research collaboration, please open an issue in this repository or contact the authors.
